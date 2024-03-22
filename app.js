@@ -29,7 +29,7 @@ function requestListener(request, response) {
     }
     // GET // index // (/restaurants)
     else if (pathname === '/restaurants') {
-      const index = render('index')
+      const index = render('index', { restaurants })
       response.end(index)
     }
     // GET // detail // (/restaurant/id)

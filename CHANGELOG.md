@@ -10,4 +10,8 @@
 
 03 add static files & json for model ([337ff97](https://github.com/Alejandrocsdev/restRaw/commit/337ff97341b7341c1b936c803ee89cecdc402a2f))
 
-04 set up template engine ([](https://github.com/Alejandrocsdev/restRaw/commit/))
+04 set up template engine ([e525e72](https://github.com/Alejandrocsdev/restRaw/commit/e525e7290c5df894f7a52f2cd54e24d20cb9f42d))
+
+### Features
+
+05 add listing page ([](https://github.com/Alejandrocsdev/restRaw/commit/))

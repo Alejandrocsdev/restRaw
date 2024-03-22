@@ -1,1 +1,28 @@
-<h1>Example App: Home</h1>
+<div class="search-bar">
+  <form class="search-bar-form" action="/restaurants">
+    <label for="search">Search</label>
+    <input type="text" id="search" value="" name="search">
+    <button type="submit">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </button>
+  </form>
+</div>
+<div class="restaurants-container">
+  {{#each restaurants}}
+  <a href="/restaurant/{{this.id}}">
+    <div class="restaurant">
+      <div class="restaurant-img">
+        <img src="{{this.image}}">
+      </div>
+      <div class="restaurant-data">
+        <p class="restaurant-name">{{this.name}}</p>
+        <p class="restaurant-category">{{this.category}}</p>
+        <p class="restaurant-rating">
+          <i class="fa-solid fa-star"></i>
+          {{this.rating}}
+        </p>
+      </div>
+    </div>
+  </a>
+  {{/each}}
+</div>
