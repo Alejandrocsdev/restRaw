@@ -11,6 +11,7 @@ function requestListener(request, response) {
   const url = new URL(request.url, `http://${host}:${port}`)
   const urlParams = url.searchParams
   const pathname = url.pathname
+  const id = Number(pathname.match(/\d+/g))
   response.setHeader('Access-Control-Allow-Origin', '*')
   // GET // root // (/)
   if (pathname === '/') {
@@ -20,6 +21,10 @@ function requestListener(request, response) {
   // GET // index // (/restaurants)
   else if (pathname === '/restaurants') {
     response.end('<h1>This is INDEX page</h1>')
+  }
+  // GET // detail // (/restaurant/id)
+  else if (pathname === `/restaurant/${id}`) {
+    response.end(`<h1>This is DETAIL page: ${id}</h1>`)
   }
   // ERROR - 404
   else {
