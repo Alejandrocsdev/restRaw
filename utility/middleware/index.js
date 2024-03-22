@@ -41,6 +41,8 @@ function type(filePath) {
     return 'text/css'
   } else if (ext === '.js') {
     return 'application/javascript'
+  } else if (ext === '.png') {
+    return 'image/png'
   }
 }
 

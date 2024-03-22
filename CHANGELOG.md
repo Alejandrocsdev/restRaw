@@ -28,4 +28,6 @@
 
 ### Build
 
-01 router init ([](https://github.com/Alejandrocsdev/restRaw/commit/))
+01 router init ([de24242](https://github.com/Alejandrocsdev/restRaw/commit/de242429593acd7bdcb51921bdac3ea73e17d702))
+
+02 database settings ([](https://github.com/Alejandrocsdev/restRaw/commit/))
