@@ -29,7 +29,15 @@ function requestListener(request, response) {
     }
     // GET // index // (/restaurants)
     else if (pathname === '/restaurants') {
-      const index = render('index', { restaurants })
+      const keyword = urlParams.get('search')
+      const matched = keyword
+        ? restaurants.filter((rest) => {
+            const nameMatch = rest.name.toLowerCase().includes(keyword.toLowerCase())
+            const nameEnMatch = rest.name_en.toLowerCase().includes(keyword.toLowerCase())
+            return nameMatch || nameEnMatch
+          })
+        : restaurants
+      const index = render('index', { restaurants: matched, keyword })
       response.end(index)
     }
     // GET // detail // (/restaurant/id)
