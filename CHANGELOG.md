@@ -18,4 +18,8 @@
 
 06 add detail page ([d5469ed](https://github.com/Alejandrocsdev/restRaw/commit/d5469ed20d86f3de089b1c08b11c816156f3ff91))
 
-07 add search funtion to listing ([](https://github.com/Alejandrocsdev/restRaw/commit/))
+07 add search funtion to listing ([9ef22bd](https://github.com/Alejandrocsdev/restRaw/commit/9ef22bd86fe6ab569b303f06e98b6bc0a1a4a1a2))
+
+### Document
+
+08 update README.md ([](https://github.com/Alejandrocsdev/restRaw/commit/))
