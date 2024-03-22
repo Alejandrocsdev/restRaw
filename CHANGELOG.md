@@ -14,4 +14,6 @@
 
 ### Features
 
-05 add listing page ([](https://github.com/Alejandrocsdev/restRaw/commit/))
+05 add listing page ([6f41561](https://github.com/Alejandrocsdev/restRaw/commit/6f415610e196fe41b978674a9f167e7429f37c12))
+
+06 add detail page ([](https://github.com/Alejandrocsdev/restRaw/commit/))

@@ -34,7 +34,9 @@ function requestListener(request, response) {
     }
     // GET // detail // (/restaurant/id)
     else if (pathname === `/restaurant/${id}`) {
-      response.end(`<h1>This is DETAIL page: ${id}</h1>`)
+      const restaurant = restaurants.find((rest) => rest.id === id)
+      const detail = render('detail', { restaurant })
+      response.end(detail)
     }
     // ERROR - 404
     else {
