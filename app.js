@@ -6,6 +6,8 @@ const middleware = new Middleware()
 const static = middleware.static('public')
 // SEEDER
 const restaurants = require('./seeder/restaurants.json').results
+// TEMPLATE ENGINE
+const render = require('./utility/template-engine')
 // SERVER
 const server = http.createServer()
 const host = 'localhost'
@@ -27,7 +29,8 @@ function requestListener(request, response) {
     }
     // GET // index // (/restaurants)
     else if (pathname === '/restaurants') {
-      response.end('<h1>This is INDEX page</h1>')
+      const index = render('index')
+      response.end(index)
     }
     // GET // detail // (/restaurant/id)
     else if (pathname === `/restaurant/${id}`) {
