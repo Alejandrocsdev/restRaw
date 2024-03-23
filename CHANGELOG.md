@@ -34,4 +34,8 @@
 
 03 set up migration file ([d0a0ad1](https://github.com/Alejandrocsdev/restRaw/commit/d0a0ad1f15669c4bcbb4481910d13eff85b883ac))
 
-04 set up seeder file ([](https://github.com/Alejandrocsdev/restRaw/commit/))
+04 set up seeder file ([30cf155](https://github.com/Alejandrocsdev/restRaw/commit/30cf1551441bcb47691d2f6d06c8b1d8ec7f9377))
+
+### Features
+
+05 implement get rest list ([](https://github.com/Alejandrocsdev/restRaw/commit/))

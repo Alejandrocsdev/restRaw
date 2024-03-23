@@ -7,7 +7,8 @@ const static = middleware.static('public')
 // TEMPLATE ENGINE
 const render = require('./utility/template-engine')
 // SEEDER
-const restaurants = require('./seeder/restaurants.json').results
+// const restaurants = require('./seeder/restaurants.json').results
+const { getData } = require('./mysql/index')
 // SERVER
 const server = http.createServer()
 const host = 'localhost'
@@ -22,7 +23,7 @@ function requestListener(request, response) {
   const id = Number(pathname.match(/\d+/g))
   const method = request.method
   response.setHeader('Access-Control-Allow-Origin', '*')
-  static(request, response, () => {
+  static(request, response, async () => {
     // GET // root // (/)
     if (pathname === '/') {
       response.writeHead(302, { Location: '/restaurants' })
@@ -30,6 +31,7 @@ function requestListener(request, response) {
     }
     // GET // index // (/restaurants)
     else if (pathname === '/restaurants') {
+      const restaurants = await getData('rests')
       const keyword = urlParams.get('search')
       const matched = keyword
         ? restaurants.filter((rest) => {
@@ -52,6 +54,7 @@ function requestListener(request, response) {
     }
     // GET // detail // (/restaurant/id)
     else if (pathname === `/restaurant/${id}`) {
+      const restaurants = await getData('rests')
       const restaurant = restaurants.find((rest) => rest.id === id)
       const detail = render('detail', { restaurant })
       response.end(detail)

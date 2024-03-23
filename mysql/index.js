@@ -57,7 +57,7 @@ function dropTable(name) {
 function insertRows(name, fields) {
   const field = String(Object.keys(fields[0]))
   let values = ''
-  fields.forEach((row)=>{
+  fields.forEach((row) => {
     values += `('${Object.values(row).join("','")}'),`
   })
   values = values.slice(0, -1) + ';'
@@ -80,4 +80,28 @@ function deleteRows(name) {
   })
 }
 
-module.exports = { createDatabase, dropDatabase, createTable, dropTable, insertRows, deleteRows }
+async function select(name) {
+  return new Promise((resolve, reject) => {
+    connection.query(`SELECT * FROM ${name};`, (err, results) => {
+      if (err) {
+        console.log('Fail to select table: ' + err)
+        reject(err)
+        return
+      }
+      console.log(`Select from '${name}' table successfully`)
+      resolve(results)
+    })
+  })
+}
+
+async function getData(name) {
+  try {
+    const results = await select(name)
+    return results
+  } catch (err) {
+    console.error(err)
+    return null
+  }
+}
+
+module.exports = { createDatabase, dropDatabase, createTable, dropTable, insertRows, deleteRows, getData }
