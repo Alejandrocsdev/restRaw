@@ -1,37 +1,27 @@
-const mysql = require('mysql2')
-const fs = require('fs')
-const env = require('../config/config.json')
-const connection = mysql.createConnection(env)
+const { createDatabase, dropDatabase } = require('../index')
 
-function createDatabase(name) {
-  connection.query(`CREATE DATABASE IF NOT EXISTS ${name}`, (err, results, fields) => {
-    if (err) {
-      console.log('Fail to create database: ' + err)
-      return
-    }
-    database(env, name, 'create')
-    console.log(`Database '${name}' created successfully`)
-  })
+// function script(up, down) {
+//   const args = process.argv.slice(2)
+//   if (args.length !== 1 || !['up', 'down'].includes(args[0])) {
+//     console.error('Usage: node script.js <up|down>')
+//     process.exit(1)
+//   }
+//   const command = args[0]
+//   if (command === 'up') {
+//     up
+//   } else if (command === 'down') {
+//     down
+//   }
+// }
+
+const args = process.argv.slice(2)
+if (args.length !== 1 || !['up', 'down'].includes(args[0])) {
+  console.error('Usage: node script.js <up|down>')
+  process.exit(1)
 }
-
-function dropDatabase(name) {
-  connection.query(`DROP DATABASE ${name}`, (err, results, fields) => {
-    if (err) {
-      console.log('Fail to drop database: ' + err)
-      return
-    }
-    database(env, name, 'drop')
-    console.log(`Database '${name}' dropped successfully`)
-  })
+const command = args[0]
+if (command === 'up') {
+  createDatabase('rest')
+} else if (command === 'down') {
+  dropDatabase('rest')
 }
-
-function database(env, name, type) {
-  if (type === 'create') {
-    env.database = name
-  } else if (type === 'drop') {
-    delete env.database
-  }
-  fs.writeFileSync(`${__dirname}/../config/config.json`, JSON.stringify(env))
-}
-
-module.exports = { createDatabase, dropDatabase }

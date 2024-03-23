@@ -6,8 +6,10 @@
   "scripts": {
     "start": "node app.js",
     "dev": "nodemon app.js",
-    "create:db": "node mysql/database/create.js",
-    "drop:db": "node mysql/database/drop.js"
+    "db:create": "node mysql/database/index.js up",
+    "db:drop": "node mysql/database/index.js down",
+    "db:migrate": "node mysql/migrations/index.js up",
+    "db:migrate:undo": "node mysql/migrations/index.js down"
   },
   "keywords": [],
   "author": "",

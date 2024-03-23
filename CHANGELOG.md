@@ -30,4 +30,6 @@
 
 01 router init ([de24242](https://github.com/Alejandrocsdev/restRaw/commit/de242429593acd7bdcb51921bdac3ea73e17d702))
 
-02 database settings ([](https://github.com/Alejandrocsdev/restRaw/commit/))
+02 database settings ([43c50ab](https://github.com/Alejandrocsdev/restRaw/commit/43c50ab0260605a94fef060befb1de404620d927))
+
+03 set up migration file ([](https://github.com/Alejandrocsdev/restRaw/commit/))
