@@ -32,4 +32,6 @@
 
 02 database settings ([43c50ab](https://github.com/Alejandrocsdev/restRaw/commit/43c50ab0260605a94fef060befb1de404620d927))
 
-03 set up migration file ([](https://github.com/Alejandrocsdev/restRaw/commit/))
+03 set up migration file ([d0a0ad1](https://github.com/Alejandrocsdev/restRaw/commit/d0a0ad1f15669c4bcbb4481910d13eff85b883ac))
+
+04 set up seeder file ([](https://github.com/Alejandrocsdev/restRaw/commit/))

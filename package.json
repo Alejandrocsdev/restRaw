@@ -9,7 +9,9 @@
     "db:create": "node mysql/database/index.js up",
     "db:drop": "node mysql/database/index.js down",
     "db:migrate": "node mysql/migrations/index.js up",
-    "db:migrate:undo": "node mysql/migrations/index.js down"
+    "db:migrate:undo": "node mysql/migrations/index.js down",
+    "db:seed": "node seeder/index.js up",
+    "db:seed:undo": "node seeder/index.js down"
   },
   "keywords": [],
   "author": "",

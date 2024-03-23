@@ -1,4 +1,5 @@
-const { createDatabase, dropDatabase } = require('../index')
+const {insertRows, deleteRows} = require('../mysql')
+const restaurants = require('../seeder/restaurants.json')
 
 const args = process.argv.slice(2)
 if (args.length !== 1 || !['up', 'down'].includes(args[0])) {
@@ -7,7 +8,7 @@ if (args.length !== 1 || !['up', 'down'].includes(args[0])) {
 }
 const command = args[0]
 if (command === 'up') {
-  createDatabase('rest')
+  insertRows('rests', restaurants.results)
 } else if (command === 'down') {
-  dropDatabase('rest')
+  deleteRows('rests')
 }
