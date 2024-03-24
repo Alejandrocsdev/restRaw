@@ -42,4 +42,6 @@
 
 06 implement creating rest ([520bfab](https://github.com/Alejandrocsdev/restRaw/commit/520bfab347aae366b9d16118e8f0fd0ec42a7c5d))
 
-07 implement updating rest ([](https://github.com/Alejandrocsdev/restRaw/commit/))
+07 implement updating rest ([5ba7f95](https://github.com/Alejandrocsdev/restRaw/commit/5ba7f95c3a87a2f2009863d903bed6a834ac4c20))
+
+08 implement deleting rest ([](https://github.com/Alejandrocsdev/restRaw/commit/))

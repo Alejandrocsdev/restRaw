@@ -80,13 +80,14 @@ function requestListener(request, response) {
       }
       // PUT // detail // (/restaurant/id)
       else if (pathname === `/restaurant/${id}` && request.method === 'PUT') {
-        console.log('enter this route successfully')
         db.updateRow('rests', postData, id)
         response.writeHead(302, { Location: `/restaurant/${id}` })
         response.end('This is DETAIL page (PUT)')
       }
       // DELETE // detail // (/restaurant/id)
       else if (pathname === `/restaurant/${id}` && request.method === 'DELETE') {
+        db.deleteRow('rests', id)
+        response.writeHead(302, { Location: `/restaurants` })
         response.end('This is DETAIL page (DELETE)')
       }
       // ERROR - 404
