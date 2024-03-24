@@ -267,6 +267,16 @@ td:first-child {
   cursor: pointer;
 }
 
+.create-input:valid,
+.edit-input:valid {
+  border: 2px solid green;
+}
+
+.create-input:invalid,
+.edit-input:invalid {
+  border: 2px solid red;
+}
+
 .submit-btn {
   background-color: #34a0a4;
 }
