@@ -1,4 +1,5 @@
-const db = require('../index')
+const db = require('..')
+const { table } = require('../../app')
 const columns = `${tableColumn(
   'id',
   'INT',
@@ -34,6 +35,6 @@ function tableColumn(Field, Type, Null, Key, Default, Extra) {
 }
 
 db.script(
-  () => db.createTable('rests', columns),
-  () => db.dropTable('rests')
+  () => db.createTable(table, columns),
+  () => db.dropTable(table)
 )

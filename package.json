@@ -1,7 +1,7 @@
 {
   "name": "restraw",
   "version": "1.0.0",
-  "description": "![Index page about Restaurant List](./public/img/C3M3_index.png)",
+  "description": "Pure Node.js built-in modules",
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
@@ -10,11 +10,11 @@
     "db:drop": "node mysql/database/index.js down",
     "db:migrate": "node mysql/migrations/index.js up",
     "db:migrate:undo": "node mysql/migrations/index.js down",
-    "db:seed": "node seeder/index.js up",
-    "db:seed:undo": "node seeder/index.js down"
+    "db:seed": "node mysql/seeder/index.js up",
+    "db:seed:undo": "node mysql/seeder/index.js down"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alejandrocsdev",
   "license": "ISC",
   "dependencies": {
     "mysql2": "^3.9.2"

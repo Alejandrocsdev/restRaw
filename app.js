@@ -9,14 +9,19 @@ const methodOverride = middleware.methodOverride()
 // TEMPLATE ENGINE
 const render = require('./utility/template-engine')
 // SEEDER
-// const restaurants = require('./seeder/restaurants.json').results
-const db = require('./mysql/index')
+// const restaurants = require('./mysql/seeder/restaurants.json').results
+const db = require('./mysql')
 // SERVER
 const server = http.createServer()
 const host = 'localhost'
 const port = 3000
 server.on('request', requestListener)
 server.listen(port, () => console.log(`http://${host}:${port}`))
+// DATABASE
+const database = 'rest'
+// TABLE
+const table = 'rests'
+module.exports = { database, table }
 
 function requestListener(request, response) {
   const url = new URL(request.url, `http://${host}:${port}`)
@@ -39,7 +44,7 @@ function requestListener(request, response) {
       }
       // GET // index // (/restaurants)
       else if (pathname === '/restaurants' && request.method === 'GET') {
-        const restaurants = await db.getData('rests')
+        const restaurants = await db.getData(table)
         const keyword = urlParams.get('search')
         const matched = keyword
           ? restaurants.filter((rest) => {
@@ -59,7 +64,7 @@ function requestListener(request, response) {
       }
       // GET // detail // (/restaurant/id)
       else if (pathname === `/restaurant/${id}` && request.method === 'GET') {
-        const restaurants = await db.getData('rests')
+        const restaurants = await db.getData(table)
         const restaurant = restaurants.find((rest) => rest.id === id)
         const editDelete = true
         const detail = render('detail', { restaurant, editDelete })
@@ -67,26 +72,26 @@ function requestListener(request, response) {
       }
       // GET // edit // (/restaurant/id/edit)
       else if (pathname === `/restaurant/${id}/edit` && request.method === 'GET') {
-        const restaurants = await db.getData('rests')
+        const restaurants = await db.getData(table)
         const restaurant = restaurants.find((rest) => rest.id === id)
         const edit = render('edit', { restaurant })
         response.end(edit)
       }
       // POST // index // (/restaurants)
       else if (pathname === '/restaurants' && request.method === 'POST') {
-        db.insertRow('rests', postData)
+        db.insertRow(table, postData)
         response.writeHead(302, { Location: '/restaurants' })
         response.end('This is INDEX page (POST)')
       }
       // PUT // detail // (/restaurant/id)
       else if (pathname === `/restaurant/${id}` && request.method === 'PUT') {
-        db.updateRow('rests', postData, id)
+        db.updateRow(table, postData, id)
         response.writeHead(302, { Location: `/restaurant/${id}` })
         response.end('This is DETAIL page (PUT)')
       }
       // DELETE // detail // (/restaurant/id)
       else if (pathname === `/restaurant/${id}` && request.method === 'DELETE') {
-        db.deleteRow('rests', id)
+        db.deleteRow(table, id)
         response.writeHead(302, { Location: `/restaurants` })
         response.end('This is DETAIL page (DELETE)')
       }

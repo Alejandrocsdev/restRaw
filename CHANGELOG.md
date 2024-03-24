@@ -50,4 +50,6 @@
 
 10 add edit page return & reset function ([edd6c63](https://github.com/Alejandrocsdev/restRaw/commit/edd6c6343e51a0efb39ab58ed1e0661dd3ec8f1f))
 
-11 set up script ([](https://github.com/Alejandrocsdev/restRaw/commit/))
+11 set up script ([cf9c301](https://github.com/Alejandrocsdev/restRaw/commit/cf9c301c65d993bee0d60272cebd53726b0a66fb))
+
+12 database & table name config ([](https://github.com/Alejandrocsdev/restRaw/commit/))

@@ -1,5 +1,6 @@
-const db = require('../index')
+const db = require('..')
+const { database } = require('../../app')
 db.script(
-  () => db.createDatabase('rest'),
-  () => db.dropDatabase('rest')
+  () => db.createDatabase(database),
+  () => db.dropDatabase(database)
 )
