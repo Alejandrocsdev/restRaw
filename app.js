@@ -9,7 +9,7 @@ const methodOverride = middleware.methodOverride()
 // TEMPLATE ENGINE
 const render = require('./utility/template-engine')
 // SEEDER
-// const restaurants = require('./mysql/seeder/restaurants.json').results
+// const restaurants = require('./public/json/restaurants.json').results
 const db = require('./mysql')
 // SERVER
 const server = http.createServer()
@@ -29,14 +29,9 @@ function requestListener(request, response) {
   const pathname = url.pathname
   const id = Number(pathname.match(/\d+/g))
   const method = request.method
-  console.log(`before middleware=> url: ${request.url}, path: ${pathname}, method: ${method}`)
-  console.log('---------------------------')
   response.setHeader('Access-Control-Allow-Origin', '*')
   static(request, response, async () => {
     methodOverride(request, response, async (postData) => {
-      console.log('pathname after middleware', pathname)
-      console.log('method after middleware', request.method)
-      console.log('id after middleware', id)
       // GET // root // (/)
       if (pathname === '/' && request.method === 'GET') {
         response.writeHead(302, { Location: '/restaurants' })

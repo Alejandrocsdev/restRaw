@@ -37,8 +37,6 @@ class Middleware {
   }
   methodOverride() {
     return (request, response, next) => {
-      console.log('Enter middleware url: ', request.url)
-      console.log('Enter middleware method: ', request.method)
       if (
         request.method === 'POST' &&
         request.headers['content-type'] === 'application/x-www-form-urlencoded'
@@ -48,13 +46,9 @@ class Middleware {
         request.on('end', () => {
           const postData = querystring.parse(body)
           const query = url.parse(request.url, true).query
-          console.log('query: ', query)
-          console.log('query._method: ', query._method)
           if (query && query._method) {
             request.method = query._method.toUpperCase()
           }
-          console.log('Leaving middleware url: ', request.url)
-          console.log('Leaving middleware method: ', request.method)
           next(postData)
         })
       } else {
@@ -70,8 +64,8 @@ function type(filePath) {
     return 'text/css'
   } else if (ext === '.js') {
     return 'application/javascript'
-  } else if (ext === '.png') {
-    return 'image/png'
+  } else if (ext === '.json') {
+    return 'application/json'
   }
 }
 
