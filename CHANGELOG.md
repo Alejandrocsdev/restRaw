@@ -38,4 +38,6 @@
 
 ### Features
 
-05 implement get rest list ([](https://github.com/Alejandrocsdev/restRaw/commit/))
+05 implement get rest list ([fa55efd](https://github.com/Alejandrocsdev/restRaw/commit/fa55efd30aaa72de3a99de6fa59fccbdba9da35f))
+
+06 implement creating rest ([](https://github.com/Alejandrocsdev/restRaw/commit/))

@@ -1,15 +1,15 @@
-const { createTable, dropTable } = require('../index')
+const db = require('../index')
 // up
 const columns = `${tableColumn('id', 'INT', 'NOT NULL', 'PRIMARY KEY', undefined, 'AUTO_INCREMENT')},
-${tableColumn('name', 'VARCHAR(255)', 'NOT NULL', undefined, `DEFAULT 'test'`)},
-${tableColumn('name_en', 'VARCHAR(255)', 'NOT NULL', undefined, `DEFAULT 'test'`)},
-${tableColumn('category', 'VARCHAR(255)', 'NOT NULL', undefined, `DEFAULT 'test'`)},
-${tableColumn('image', 'VARCHAR(255)', 'NOT NULL', undefined, `DEFAULT 'test'`)},
-${tableColumn('location', 'VARCHAR(255)', 'NOT NULL', undefined, `DEFAULT 'test'`)},
-${tableColumn('phone', 'VARCHAR(255)', 'NOT NULL', undefined, `DEFAULT 'test'`)},
-${tableColumn('google_map', 'VARCHAR(255)', 'NOT NULL', undefined, `DEFAULT 'test'`)},
-${tableColumn('rating', 'VARCHAR(255)', 'NOT NULL', undefined, `DEFAULT 'test'`)},
-${tableColumn('description', 'VARCHAR(255)', 'NOT NULL', undefined, `DEFAULT 'test'`)},
+${tableColumn('name', 'VARCHAR(255)', 'NOT NULL')},
+${tableColumn('name_en', 'VARCHAR(255)', 'NOT NULL')},
+${tableColumn('category', 'VARCHAR(255)', 'NOT NULL')},
+${tableColumn('image', 'VARCHAR(255)', 'NOT NULL')},
+${tableColumn('location', 'VARCHAR(255)', 'NOT NULL')},
+${tableColumn('phone', 'VARCHAR(255)', 'NOT NULL')},
+${tableColumn('google_map', 'VARCHAR(255)', 'NOT NULL')},
+${tableColumn('rating', 'VARCHAR(255)', 'NOT NULL')},
+${tableColumn('description', 'VARCHAR(255)', 'NOT NULL')},
 ${tableColumn('createdAt', 'DATETIME', 'NOT NULL', undefined, 'DEFAULT CURRENT_TIMESTAMP')},
 ${tableColumn('updatedAt', 'DATETIME', 'NOT NULL', undefined, 'DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')}`
 // createTable('rests', columns)
@@ -31,7 +31,7 @@ if (args.length !== 1 || !['up', 'down'].includes(args[0])) {
 }
 const command = args[0]
 if (command === 'up') {
-  createTable('rests', columns)
+  db.createTable('rests', columns)
 } else if (command === 'down') {
-  dropTable('rests')
+  db.dropTable('rests')
 }

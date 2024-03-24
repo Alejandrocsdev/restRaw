@@ -1,5 +1,6 @@
 // MODULE
 const http = require('http')
+const querystring = require('querystring')
 // MIDDLEWARE
 const Middleware = require('./utility/middleware')
 const middleware = new Middleware()
@@ -8,7 +9,7 @@ const static = middleware.static('public')
 const render = require('./utility/template-engine')
 // SEEDER
 // const restaurants = require('./seeder/restaurants.json').results
-const { getData } = require('./mysql/index')
+const db = require('./mysql/index')
 // SERVER
 const server = http.createServer()
 const host = 'localhost'
@@ -22,16 +23,17 @@ function requestListener(request, response) {
   const pathname = url.pathname
   const id = Number(pathname.match(/\d+/g))
   const method = request.method
+  console.log(`path: ${request.url}, method: ${method}`)
   response.setHeader('Access-Control-Allow-Origin', '*')
   static(request, response, async () => {
     // GET // root // (/)
-    if (pathname === '/') {
+    if (pathname === '/' && method === 'GET') {
       response.writeHead(302, { Location: '/restaurants' })
       response.end('<h1>This is the root</h1>')
     }
     // GET // index // (/restaurants)
-    else if (pathname === '/restaurants') {
-      const restaurants = await getData('rests')
+    else if (pathname === '/restaurants' && method === 'GET') {
+      const restaurants = await db.getData('rests')
       const keyword = urlParams.get('search')
       const matched = keyword
         ? restaurants.filter((rest) => {
@@ -46,15 +48,23 @@ function requestListener(request, response) {
     }
     // POST // index // (/restaurants)
     else if (pathname === '/restaurants' && method === 'POST') {
+      let body = ''
+      request.on('data', (chunk) => (body += chunk.toString()))
+      request.on('end', () => {
+        const postData = querystring.parse(body)
+        db.insertRow('rests', postData)
+      })
+      response.writeHead(302, { Location: '/restaurants' })
       response.end('This is INDEX page (POST)')
     }
     // GET // create // (/restaurant/create)
-    else if (pathname === '/restaurant/create') {
-      response.end('This is CREATE page')
+    else if (pathname === '/restaurant/create' && method === 'GET') {
+      const create = render('create')
+      response.end(create)
     }
     // GET // detail // (/restaurant/id)
-    else if (pathname === `/restaurant/${id}`) {
-      const restaurants = await getData('rests')
+    else if (pathname === `/restaurant/${id}` && method === 'GET') {
+      const restaurants = await db.getData('rests')
       const restaurant = restaurants.find((rest) => rest.id === id)
       const detail = render('detail', { restaurant })
       response.end(detail)
@@ -69,7 +79,7 @@ function requestListener(request, response) {
       response.end(detail)
     }
     // GET // edit // (/restaurant/id/edit)
-    else if (pathname === `/restaurant/${id}/edit`) {
+    else if (pathname === `/restaurant/${id}/edit` && method === 'GET') {
       response.end('This is EDIT page')
     }
     // ERROR - 404

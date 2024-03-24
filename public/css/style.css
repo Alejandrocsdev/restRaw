@@ -30,7 +30,7 @@ header {
   border-radius: 20px;
   border: 2px solid #353535;
   font-size: 24px;
-  position: relative;
+  position: absolute;
   left: 30px;
   display: flex;
   justify-content: center;
@@ -39,6 +39,78 @@ header {
 
 .logo-link {
   color: #353535;
+}
+
+/* create button */
+
+.create {
+  width: 80px;
+  height: 40px;
+  background-color: #8d99ae;
+  border-radius: 10px;
+  border: 2px solid #353535;
+  position: absolute;
+  right: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.create:hover {
+  cursor: pointer;
+  background-color: #d9d9d9;
+}
+
+.create-link {
+  font-weight: 700;
+  text-decoration: none;
+  color: #353535;
+}
+
+/* edit & delete button */
+
+.edit-delete {
+  width: 160px;
+  height: 40px;
+  background-color: #8d99ae;
+  border-radius: 10px;
+  border: 2px solid #353535;
+  position: absolute;
+  right: 30px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.edit-link,
+.delete-btn {
+  width: 50px;
+  font-size: 16px;
+  font-weight: 700;
+  text-decoration: none;
+  text-align: center;
+  color: #353535;
+  background-color: #34a0a4;
+  border-radius: 10px;
+  border: 2px solid #353535;
+}
+
+.edit-link {
+  background-color: #34a0a4;
+}
+
+.delete-btn {
+  background-color: #c9184a;
+}
+
+.edit-link:hover,
+.delete-btn:hover {
+  cursor: pointer;
+  filter: brightness(1.5);
+  color: black;
+  border: 2px solid black;
 }
 
 main {
@@ -149,29 +221,68 @@ td:first-child {
   text-wrap: nowrap;
 }
 
-/* create button */
+/* create.html & edit.html */
 
-.create {
-  width: 80px;
-  height: 40px;
-  background-color: #8d99ae;
+.create-div,
+.edit-div {
+  margin-bottom: 20px;
+  display: flex;
+}
+
+.create-label,
+.edit-label {
+  width: 100px;
+  text-align: center;
+  text-wrap: nowrap;
+}
+
+.create-colon,
+.edit-colon {
+  margin-right: 10px;
+}
+
+.create-input,
+.edit-input {
+  width: 100%;
+}
+
+.create-btn,
+.edit-btn {
+  display: flex;
+  justify-content: end;
+}
+
+.create-btn>button,
+.edit-btn>button {
+  width: 60px;
+  margin-left: 16px;
   border-radius: 10px;
   border: 2px solid #353535;
-  position: absolute;
-  right: 30px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  font-weight: 700;
   transition: 0.5s;
 }
 
-.create:hover {
+.create-btn>button:hover,
+.edit-btn>button:hover {
   cursor: pointer;
-  background-color: #d9d9d9;
 }
 
-.create-link {
-  font-weight: 700;
-  text-decoration: none;
-  color: #353535;
+.submit-btn {
+  background-color: #34a0a4;
+}
+
+.reset-btn {
+  background-color: #c9184a;
+}
+
+.return-btn {
+  background-color: #778da9;
+}
+
+.submit-btn:hover,
+.reset-btn:hover,
+.return-btn:hover {
+  filter: brightness(1.5);
+  color: black;
+  border: 2px solid black;
 }
