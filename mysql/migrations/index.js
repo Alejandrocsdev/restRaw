@@ -1,6 +1,12 @@
 const db = require('../index')
-// up
-const columns = `${tableColumn('id', 'INT', 'NOT NULL', 'PRIMARY KEY', undefined, 'AUTO_INCREMENT')},
+const columns = `${tableColumn(
+  'id',
+  'INT',
+  'NOT NULL',
+  'PRIMARY KEY',
+  undefined,
+  'AUTO_INCREMENT'
+)},
 ${tableColumn('name', 'VARCHAR(255)', 'NOT NULL')},
 ${tableColumn('name_en', 'VARCHAR(255)', 'NOT NULL')},
 ${tableColumn('category', 'VARCHAR(255)', 'NOT NULL')},
@@ -11,8 +17,13 @@ ${tableColumn('google_map', 'VARCHAR(255)', 'NOT NULL')},
 ${tableColumn('rating', 'VARCHAR(255)', 'NOT NULL')},
 ${tableColumn('description', 'VARCHAR(255)', 'NOT NULL')},
 ${tableColumn('createdAt', 'DATETIME', 'NOT NULL', undefined, 'DEFAULT CURRENT_TIMESTAMP')},
-${tableColumn('updatedAt', 'DATETIME', 'NOT NULL', undefined, 'DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')}`
-// createTable('rests', columns)
+${tableColumn(
+  'updatedAt',
+  'DATETIME',
+  'NOT NULL',
+  undefined,
+  'DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP'
+)}`
 
 function tableColumn(Field, Type, Null, Key, Default, Extra) {
   Null = Null === undefined ? '' : ` ${Null}`
@@ -21,17 +32,8 @@ function tableColumn(Field, Type, Null, Key, Default, Extra) {
   Extra = Extra === undefined ? '' : ` ${Extra}`
   return `${Field} ${Type}${Null}${Key}${Default}${Extra}`
 }
-// down
-// dropTable('rests')
 
-const args = process.argv.slice(2)
-if (args.length !== 1 || !['up', 'down'].includes(args[0])) {
-  console.error('Usage: node script.js <up|down>')
-  process.exit(1)
-}
-const command = args[0]
-if (command === 'up') {
-  db.createTable('rests', columns)
-} else if (command === 'down') {
-  db.dropTable('rests')
-}
+db.script(
+  () => db.createTable('rests', columns),
+  () => db.dropTable('rests')
+)

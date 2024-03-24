@@ -28,9 +28,16 @@
 
 4. 安裝完畢後，請依序輸入：
 
+   #預設MySQL參數為：
+   
+   user: root / host: 127.0.0.1 / password: password 
+   
+   (請見config.json)
+
    ```bash
-   npm run migrate
-   npm run seed
+   npm run db:create
+   npm run db:migrate
+   npm run db:seed
    npm run start
    ```
 

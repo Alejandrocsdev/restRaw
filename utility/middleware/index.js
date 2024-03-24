@@ -58,7 +58,6 @@ class Middleware {
           next(postData)
         })
       } else {
-        // console.log('passed')
         next()
       }
     }

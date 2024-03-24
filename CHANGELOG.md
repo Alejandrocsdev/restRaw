@@ -48,4 +48,6 @@
 
 09 add create page return & reset function ([91c3899](https://github.com/Alejandrocsdev/restRaw/commit/91c3899ac653470294aefef437eb7638fb4d553f))
 
-10 add edit page return & reset function ([](https://github.com/Alejandrocsdev/restRaw/commit/))
+10 add edit page return & reset function ([edd6c63](https://github.com/Alejandrocsdev/restRaw/commit/edd6c6343e51a0efb39ab58ed1e0661dd3ec8f1f))
+
+11 set up script ([](https://github.com/Alejandrocsdev/restRaw/commit/))
