@@ -40,4 +40,6 @@
 
 05 implement get rest list ([fa55efd](https://github.com/Alejandrocsdev/restRaw/commit/fa55efd30aaa72de3a99de6fa59fccbdba9da35f))
 
-06 implement creating rest ([](https://github.com/Alejandrocsdev/restRaw/commit/))
+06 implement creating rest ([520bfab](https://github.com/Alejandrocsdev/restRaw/commit/520bfab347aae366b9d16118e8f0fd0ec42a7c5d))
+
+07 implement updating rest ([](https://github.com/Alejandrocsdev/restRaw/commit/))

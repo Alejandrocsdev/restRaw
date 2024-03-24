@@ -35,7 +35,7 @@ function render(file, data) {
     }
     if (objRegexp.test(main)) {
       main = main.replace(objRegexp, (match, obj, key) => {
-        return data[obj][key]
+        return data?.[obj]?.[key] ?? ''
       })
       continueReplacing = true
     }

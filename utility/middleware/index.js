@@ -1,6 +1,8 @@
 // MODULE
 const path = require('path')
 const fs = require('fs')
+const url = require('url')
+const querystring = require('querystring')
 
 class Middleware {
   static(directory) {
@@ -31,6 +33,34 @@ class Middleware {
         return
       }
       next()
+    }
+  }
+  methodOverride() {
+    return (request, response, next) => {
+      console.log('Enter middleware url: ', request.url)
+      console.log('Enter middleware method: ', request.method)
+      if (
+        request.method === 'POST' &&
+        request.headers['content-type'] === 'application/x-www-form-urlencoded'
+      ) {
+        let body = ''
+        request.on('data', (chunk) => (body += chunk.toString()))
+        request.on('end', () => {
+          const postData = querystring.parse(body)
+          const query = url.parse(request.url, true).query
+          console.log('query: ', query)
+          console.log('query._method: ', query._method)
+          if (query && query._method) {
+            request.method = query._method.toUpperCase()
+          }
+          console.log('Leaving middleware url: ', request.url)
+          console.log('Leaving middleware method: ', request.method)
+          next(postData)
+        })
+      } else {
+        // console.log('passed')
+        next()
+      }
     }
   }
 }

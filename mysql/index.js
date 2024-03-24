@@ -97,6 +97,21 @@ class Mysql {
     })
   }
 
+  updateRow(name, fields, id) {
+
+    const row = Object.entries(fields)
+    .map(([key, value]) => `${this.connection.escapeId(key)} = ${this.connection.escape(value)}`)
+    .join(',')
+
+    this.connection.query(`UPDATE ${name} SET ${row} WHERE id = ${id};`, (err) => {
+      if (err) {
+        console.log('Fail to update row: ' + err)
+        return
+      }
+      console.log(`Value from '${name}' table updated successfully`)
+    })
+  }
+
   deleteRow(name, id) {
     this.connection.query(`DELETE FROM ${name} WHERE id = ${id};`, (err) => {
       if (err) {
