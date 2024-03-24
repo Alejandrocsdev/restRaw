@@ -28,11 +28,13 @@
 
 4. 安裝完畢後，請依序輸入：
 
-   #預設MySQL參數為：
-   
-   user: root / host: 127.0.0.1 / password: password 
-   
-   (請見config.json)
+   #註解#
+
+   #預設MySQL參數為：user=root / host=127.0.0.1 / password=password (修改請見config.json)
+
+   #預設database名稱：rest / table名稱：rests (修改請見app.js)
+
+   #刪除database可執行：```npm run db:drop```
 
    ```bash
    npm run db:create
@@ -44,7 +46,7 @@
 5. 若看見此行訊息則代表順利運行，打開瀏覽器進入到以下網址
 
    ```bash
-   Listening on http://localhost:3000
+   http://localhost:3000
    ```
 
 6. 若欲暫停使用
