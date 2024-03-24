@@ -44,4 +44,6 @@
 
 07 implement updating rest ([5ba7f95](https://github.com/Alejandrocsdev/restRaw/commit/5ba7f95c3a87a2f2009863d903bed6a834ac4c20))
 
-08 implement deleting rest ([](https://github.com/Alejandrocsdev/restRaw/commit/))
+08 implement deleting rest ([6e3a526](https://github.com/Alejandrocsdev/restRaw/commit/6e3a5267026f605e87f37b3249a0e085189e0e95))
+
+09 add create page return & reset function ([](https://github.com/Alejandrocsdev/restRaw/commit/))
